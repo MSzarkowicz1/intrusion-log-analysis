@@ -1,0 +1,8 @@
+pynvim
+jupyter
+jupyter-console
+ipykernel
+jupytext
+numpy
+pandas
+matplotlib
