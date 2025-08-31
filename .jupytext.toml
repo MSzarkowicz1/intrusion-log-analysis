@@ -1,4 +1,4 @@
-# .jupytext.toml
-# Pair .ipynb in notebooks/ with .py:percent in src/
-formats = "notebooks//ipynb,src//py:percent"
+formats = "notebooks//ipynb,notebooks//py:percent"
+cell_metadata_filter = "-all"
+
 

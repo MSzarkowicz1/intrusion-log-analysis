@@ -1,0 +1,15 @@
+[project]
+name = "intrusion"
+version = "0.0.1"
+requires-python = ">=3.13"
+dependencies = ["pandas", "numpy", "matplotlib", "scipy", "streamlit"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["intrusion"]
+
+[tool.ruff]
+target-version = "py313"
+
+[tool.ruff.lint]
+per-file-ignores = { "notebooks/*.py" = ["E402"] }
