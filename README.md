@@ -74,19 +74,18 @@ streamlit run app.py
 - Values regenerate from your data; they will differ if the CSV changes.
 
 ### Figures
-
-- Distributions
+#### Distributions
 ![Distributions](outputs/figures/distributions.png)
-- Top rules by precision (dashed line = baseline)
-![Top Precision]
-- Top rules by lift
-![Top Lift]()
-- Cumulative recall by priority
-![Cumulative Recall]()
-- Incremental precision per step
-![Incremental Precision]()
-- Precision by severity (dashed = baseline)
-![Precision by Severity]
+#### Top rules by precision
+![Top rules by precision (dashed line = baseline)](outputs/figures/top_precision.png)
+#### Top rules by lift
+![Top rules by lift](outputs/figures/top_lift.png)
+#### Cumulative recall by priority
+![Cumulative recall by priority](outputs/figures/cumulative_recall.png)
+#### Incremental precision per step
+![Incremental precision](outputs/figures/incremental_precision.png)
+#### Precision by severity (dashed = baseline)
+![Precision by Severity](outputs/figures/precision_by_severity.png)
 
 ### Streamlit app
 

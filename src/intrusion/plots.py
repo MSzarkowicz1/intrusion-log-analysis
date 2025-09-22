@@ -1,12 +1,9 @@
-# intrusion/plots.py
 from math import ceil
 from pathlib import Path
 import re
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-
-# ---------------------------- utils ----------------------------
 
 
 def _save(fig, out_path: Path):
@@ -28,9 +25,6 @@ def _numeric_cols(df: pd.DataFrame, include: list[str] | None = None) -> list[st
     if include:
         return [c for c in include if c in df.columns]
     return df.select_dtypes(include=[np.number]).columns.tolist()
-
-
-# --------------------- Top Precision / Lift ---------------------
 
 
 def make_top_precision_figure(
@@ -101,9 +95,6 @@ def plot_top_lift(df_eval: pd.DataFrame, out_path: Path, top_n: int = 15):
     _save(fig, out_path)
 
 
-# ------------------ Cumulative Recall / Incremental  ------------------
-
-
 def make_cumulative_recall_figure(
     cum_table: pd.DataFrame,
     *,
@@ -129,7 +120,6 @@ def make_cumulative_recall_figure(
     ax.set_xticks(x)
     ax.set_xticklabels(labels, rotation=rotate, ha="right")
 
-    # annotate last point for convenience
     ax.annotate(
         f"{cum_table['Cumulative Recall'].iloc[-1]:.2f}",
         (x[-1], cum_table["Cumulative Recall"].iloc[-1]),
@@ -179,9 +169,6 @@ def plot_incremental_precision(inc_detail: pd.DataFrame, out_path: Path):
     _save(fig, out_path)
 
 
-# --------------------- Precision by Severity ---------------------
-
-
 def make_precision_by_severity_figure(
     by_sev: pd.DataFrame,
     baseline: float,
@@ -206,9 +193,6 @@ def make_precision_by_severity_figure(
 def plot_precision_by_severity(by_sev: pd.DataFrame, baseline: float, out_path: Path):
     fig = make_precision_by_severity_figure(by_sev, baseline)
     _save(fig, out_path)
-
-
-# ------------------ Numeric Distributions / Corr ------------------
 
 
 def plot_numeric_distributions_grid(
@@ -334,7 +318,7 @@ def make_correlation_heatmap_figure(
         fig, _ = plt.subplots(figsize=(6, 2))
         return fig
 
-    corr = df[numeric_cols].corr(method=method)
+    corr = df[numeric_cols].corr(method=method)  # pyright: ignore[]
     mat = corr.values.copy()
     if mask_upper:
         iu = np.triu_indices_from(mat, k=1)
@@ -345,7 +329,7 @@ def make_correlation_heatmap_figure(
         figsize = (s, s)
 
     fig, ax = plt.subplots(figsize=figsize)
-    cmap = plt.cm.viridis
+    cmap = plt.cm.viridis  # pyright: ignore[]
     cmap.set_bad(color="white")
     im = ax.imshow(mat, vmin=-1, vmax=1, cmap=cmap)
 
