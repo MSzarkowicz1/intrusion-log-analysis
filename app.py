@@ -75,7 +75,7 @@ with tab1:
     )
     st.subheader("Distribution")
     with st.sidebar:
-        dark_mode = st.checkbox("Use dark plot theme", value=True)
+        dark_mode = st.checkbox("Use dark plot theme", value=False)
 
     if dark_mode:
         apply_dark_theme()
